@@ -122,7 +122,7 @@ void endGame()
 void drawBird(int x, int y) 
 {
 
-  if(mvinch(y,x)==PILLAR) endGame();    // collision!  TEMP add collisions with numbers
+  if(mvinch(y,x)==PILLAR) endGame();    // collision!  To do add collisions with numbers
   drawChar(BIRD,x,y);                  // draw new one
 
 }
@@ -131,7 +131,7 @@ void drawBird(int x, int y)
 void drawBirdFlapping(int x, int y) 
 {
 
-  if(mvinch(y,x)==PILLAR) endGame();    // collision!  TEMP add collisions with numbers
+  if(mvinch(y,x)==PILLAR) endGame();    // collision!  To do add collisions with numbers
   drawChar(WING,x,y);                  // draw new one
 
 }
@@ -210,7 +210,7 @@ int main() {
  buildLevel(); 
 
  birdy = .67*max_y;	     // start the bird up at 2/3rds of the screen vertically
- birdx = .15*max_x;	     // put bird 15% in to the screen, TEMP hardcoded to 10,10
+ birdx = .15*max_x;	     // put bird 15% in to the screen.
  gate = GATE*max_y;
  velocity = 0.0;		    // not falling, yet.
  position = 0;          // this is the horizontal position in the map.
@@ -219,11 +219,11 @@ int main() {
 
  while(1) {				  // MAIN LOOP
 
- 	ch = getch();	// No wait check for press
+ 	ch = getch();	    // No wait check for press
 
  	switch(tolower(ch)) {
 
-		case 'x' :      // X keypress
+		case 'x' :      // X keypress (Exit)
       free(pillar);
 			restoreScreen();
 			#ifdef DEBUG
@@ -238,7 +238,7 @@ int main() {
 			#endif
 			return 0;
 
-		case 'w':        // W keypress
+		case 'w':        // W keypress  (Flap)
       if(velocity>0) velocity=velocity/FLAP;      // weird bird inertia correction.  Initially, I let a flap just add to velocity, but that
 			velocity=velocity+2*bigG;                  // is not how the original game works.  A flap is more magical and helps with gameplay.
       if(birdy>0) birdy--;
